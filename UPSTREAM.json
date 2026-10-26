@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/tmcqueen/ngraphify",
+  "commit": "6cddd335596f8dbf93ec9018752190379603e29f",
+  "license": "GPL-3.0",
+  "local_patch": "patches/arduino-and-build-ignores.patch"
+}

@@ -1,0 +1,39 @@
+diff --git a/src/Graphiphy/Detection/FileClassifier.cs b/src/Graphiphy/Detection/FileClassifier.cs
+index 0a7f943..49059af 100644
+--- a/src/Graphiphy/Detection/FileClassifier.cs
++++ b/src/Graphiphy/Detection/FileClassifier.cs
+@@ -6,7 +6,7 @@ public static class FileClassifier
+ {
+     private static readonly HashSet<string> CodeExtensions =
+     [
+-        ".py", ".js", ".ts", ".jsx", ".tsx", ".c", ".h", ".cpp", ".hpp", ".cc", ".cxx",
++        ".py", ".js", ".ts", ".jsx", ".tsx", ".c", ".h", ".cpp", ".hpp", ".hxx", ".cc", ".cxx", ".ino",
+         ".cs", ".java", ".go", ".rs", ".rb", ".swift", ".kt", ".kts", ".scala", ".sc",
+         ".php", ".lua", ".zig", ".ps1", ".psm1", ".ex", ".exs", ".m", ".mm", ".jl",
+         ".v", ".sv", ".f90", ".f95", ".f03", ".f", ".for", ".pas", ".pp", ".lpr",
+diff --git a/src/Graphiphy/Detection/IgnorePatterns.cs b/src/Graphiphy/Detection/IgnorePatterns.cs
+index 15c46c9..e7b3666 100644
+--- a/src/Graphiphy/Detection/IgnorePatterns.cs
++++ b/src/Graphiphy/Detection/IgnorePatterns.cs
+@@ -14,7 +14,7 @@ public sealed class IgnorePatterns
+         ".git", ".hg", ".svn", "__pycache__", "node_modules", ".tox",
+         ".mypy_cache", ".pytest_cache", "dist", "build", ".eggs",
+         "graphify-out", ".graphify-out", "venv", ".venv", "env",
+-        ".idea", ".vs", ".vscode", "bin", "obj",
++        ".idea", ".vs", ".vscode", "bin", "obj", ".pio", "Debug", "Release",
+     ];
+ 
+     private static readonly string[] SensitivePatterns =
+diff --git a/src/Graphiphy/Extraction/Extractors/CppExtractor.cs b/src/Graphiphy/Extraction/Extractors/CppExtractor.cs
+index 5d681f7..3c70ee5 100644
+--- a/src/Graphiphy/Extraction/Extractors/CppExtractor.cs
++++ b/src/Graphiphy/Extraction/Extractors/CppExtractor.cs
+@@ -5,7 +5,7 @@ namespace Graphiphy.Extraction.Extractors;
+ public sealed class CppExtractor : GenericTreeSitterExtractor
+ {
+     public override IReadOnlySet<string> SupportedExtensions { get; } =
+-        new HashSet<string> { ".cpp", ".hpp", ".cc", ".cxx", ".hxx", ".h" };
++        new HashSet<string> { ".cpp", ".hpp", ".cc", ".cxx", ".hxx", ".h", ".ino" };
+ 
+     public override string TreeSitterLanguage => "cpp";
+ 
